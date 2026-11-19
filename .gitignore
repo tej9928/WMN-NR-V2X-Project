@@ -1,0 +1,6 @@
+# Simulation databases
+*.db
+
+# Experiment outputs
+experiments/**/results/databases/
+experiments/**/results/logs/
