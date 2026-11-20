@@ -7,10 +7,13 @@ PROJECT_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 NS3_ROOT="$(cd -- "$PROJECT_ROOT/.." && pwd)"
 
 EXPERIMENT_DIR="$PROJECT_ROOT/experiments/experiment_1_a"
+
 DB_DIR="$EXPERIMENT_DIR/results/databases"
 LOG_DIR="$EXPERIMENT_DIR/results/logs"
+PLOT_DIR="$EXPERIMENT_DIR/results/plots"
+ANALYSIS_DIR="$EXPERIMENT_DIR/analysis"
 
-mkdir -p "$DB_DIR" "$LOG_DIR"
+mkdir -p "$DB_DIR" "$LOG_DIR" "$PLOT_DIR" "$ANALYSIS_DIR"
 
 cd "$NS3_ROOT"
 

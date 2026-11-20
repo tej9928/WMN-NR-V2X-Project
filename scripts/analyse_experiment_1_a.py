@@ -8,16 +8,16 @@ import matplotlib.pyplot as plt
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 
-RESULTS_DIR = (
-    PROJECT_ROOT
-    / "experiments"
-    / "experiment_1_a"
-    / "results"
-    / "databases"
-)
+EXPERIMENT_DIR = PROJECT_ROOT / "experiments" / "experiment_1_a"
 
-ANALYSIS_DIR = RESULTS_DIR.parent / "analysis"
+RESULTS_DIR = EXPERIMENT_DIR / "results"
+DB_DIR = RESULTS_DIR / "databases"
+
+ANALYSIS_DIR = EXPERIMENT_DIR / "analysis"
+PLOT_DIR = RESULTS_DIR / "plots"
+
 ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
+PLOT_DIR.mkdir(parents=True, exist_ok=True)
 
 INTER_VEHICLE_DISTANCES = [40, 30, 20, 15, 10]
 DATABASE_SUFFIX = "-nr-v2x-west-to-east-highway.db"
@@ -159,7 +159,7 @@ def main():
     plt.grid(True, linestyle="--", alpha=0.5)
     plt.tight_layout()
 
-    plot_path = ANALYSIS_DIR / "density_vs_prr.png"
+    plot_path = PLOT_DIR / "density_vs_prr.png"
 
     plt.savefig(plot_path, dpi=300)
     plt.show()
