@@ -155,7 +155,7 @@ def main():
     plt.title("Spatial Vehicle Density vs Packet Reception Ratio")
 
     plt.xticks(x)
-    plt.ylim(67.5, 69.5)
+    plt.ylim(67, 68.5)
     plt.grid(True, linestyle="--", alpha=0.5)
     plt.tight_layout()
 
