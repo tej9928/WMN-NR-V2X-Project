@@ -1,33 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Locate the project repository
+# Define the directories as they are present in the repo
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 
-# Locate the ns-3 installation (sibling directory)
+# ns-3 installation path
 NS3_ROOT="$(cd -- "$PROJECT_ROOT/.." && pwd)"
 
-# Experiment output directories (inside project repository)
 EXPERIMENT_DIR="$PROJECT_ROOT/experiments/experiment_1"
 DB_DIR="$EXPERIMENT_DIR/results/databases"
 LOG_DIR="$EXPERIMENT_DIR/results/logs"
 
 mkdir -p "$DB_DIR" "$LOG_DIR"
 
-# Run ns-3 from its actual installation directory
 cd "$NS3_ROOT"
-
-if [[ ! -x "./ns3" ]]; then
-    echo "Error: ns-3 launcher not found in $NS3_ROOT"
-    exit 1
-fi
 
 # Experiment configuration
 LANES=3
 VEHICLES_PER_LANE=(5 9 13 17)
 SEEDS=(1 2 3 4 5 6 7 8 9 10)
 
+# We will be using the pre-existing highway example for our experiment changing only the command line parameters as needed.
 EXAMPLE="nr-v2x-west-to-east-highway"
 
 COMMON_ARGS=(
